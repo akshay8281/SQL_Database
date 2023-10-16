@@ -1,0 +1,39 @@
+// Procedure Method
+// Simple or Without Parameter
+
+// Create Database
+
+create database procedure_db
+
+
+// Create Table
+
+create table candidates
+(
+	can_id  int ,
+	can_name  VARCHAR (40)
+);
+
+
+
+// Insert Data through Procedure Method
+// Create Procedure ( )
+
+DELIMITER $$
+
+create procedure inputData ( )
+Begin
+
+	Insert Into candidates (can_id, can_name)
+	values (1, "Akshay");
+
+End
+
+
+// Display Data into Table using Procedure
+
+Call InputData ( );
+
+
+// Shows the Data
+

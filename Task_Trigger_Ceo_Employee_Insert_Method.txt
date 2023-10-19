@@ -1,0 +1,52 @@
+-- Task:- create two tables ceo and employee and data in employee 
+table and see in ceo table
+
+// Create Database
+
+create database Aks_Trader;
+
+// Create Table Employee
+
+create table employee
+(
+    emp_id int,
+    emp_name varchar (40),
+    emp_designation varchar (40)
+);
+
+
+// Data Inserted into table Employee
+
+insert into employee (emp_id, emp_name, emp_designation)
+values (1, "Akshay Pitroda", "President");
+
+
+// Create Table CEO
+
+create table ceo
+(
+    ceo_id int,
+    ceo_name varchar (40),
+    ceo_date_time timestamp,
+    ceo_action_performed varchar (40)
+);
+
+
+//  Create Trigger for Data Inserted in future show te Result
+// Trigger Make in Users Table ( EMPLOYEE)
+ 
+DELIMITER $$
+
+create trigger insertTrigger after insert on employee for each row
+begin
+
+insert into ceo (ceo_id, ceo_name, ceo_action_performed) 
+values (new.emp_id, new.emp_name, "Record Inserted");
+
+end
+
+//  Data inserted in Employeee table
+insert into employee (emp_id, emp_name, emp_designation)
+values (2, "Jay Patel", "General Manager");
+
+// Shows Result in CEO Table Data was inserted in Employee Table

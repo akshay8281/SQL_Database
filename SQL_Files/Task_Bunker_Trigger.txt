@@ -1,0 +1,43 @@
+Trigger Method using { Insert Trigger } 
+
+// Create Database
+
+create database trigger_db;
+
+// create table Bunker
+
+CREATE TABLE bunker
+(
+    b_id int,
+    b_name VARCHAR (40)
+);
+
+// Insert Data into Table Bunker
+INSERT INTO `bunker` (`b_id`, `b_name`) VALUES ('1', 'Akshay');
+ 
+
+// Create Table Test
+
+CREATE TABLE test
+(
+    t_id int,
+    t_name VARCHAR (40),
+    t_date_time timestamp,
+    t_action_performed VARCHAR (40)
+);
+
+
+// Create Trigger in Table Bunker
+
+DELIMITER $$
+
+
+CREATE TRIGGER insertTrigger AFTER INSERT on bunker FOR EACH ROW
+BEGIN
+
+INSERT INTO test (t_id, t_name, t_action_performed ) VALUES (new.b_id, new.b_name, "Record Inserted");
+
+END
+
+
+// Insert any Data into Table Bunker it will shows Record Inserted with Date and Time

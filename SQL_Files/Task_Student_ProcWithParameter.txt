@@ -1,0 +1,36 @@
+Task:- create table student and add student id,name,subject and marks and
+add data using procedure
+
+// Create Databasse
+CREATE DATABASE proc_task;
+
+
+// Create Table
+
+CREATE TABLE student
+(
+    student_id int,
+    student_name varchar (40),
+    student_subject varchar (40),
+    student_marks int
+);
+
+//  Create Procedure
+
+DELIMITER $$
+
+CREATE PROCEDURE insertStuData (stu_id int, stu_name varchar(40), stu_sub varchar(40), stu_marks int)
+BEGIN
+
+INSERT INTO student (student_id, student_name, student_subject, student_marks)
+VALUES (stu_id, stu_name, stu_sub);
+
+END
+
+// Insert Data using Procedure Method by Call Function
+
+CALL insertStuData (1, "Akshay Pitroda", "Full Stack Developer", 89);
+CALL insertStuData (2, "Jay Patel", "React", 78);
+CALL insertStuData (3, "Nisha Rayani", "Java", 70);
+CALL insertStuData (4, "Kuldip Chavda", "Python", 82);
+CALL insertStuData (5, "Anil Panchani", "NodeJS", 60);

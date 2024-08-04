@@ -1,0 +1,54 @@
+Self task Trigger Method using { Delete Trigger } 
+// Create Database or If already don't create it
+
+// Create Table student
+
+CREATE TABLE student
+(
+    student_id int,
+    student_name VARCHAR (40)
+);
+
+// Insert Data into Table student
+
+INSERT INTO  student  ( student_id ,  student_name ) VALUES 
+( 1, "Nisha Rayani");
+
+INSERT INTO  student  ( student_id ,  student_name ) VALUES 
+ (2, "Akshay Pitroda");	
+
+INSERT INTO  student  ( student_id ,  student_name ) VALUES 
+(3, "Milan Patel");
+
+INSERT INTO  student  ( student_id ,  student_name ) VALUES 
+ (4, "Jay Patel");
+
+INSERT INTO  student  ( student_id ,  student_name ) VALUES 
+ (5, "JayrajSinh Jadav");
+
+
+// Create Another Table DELETE
+
+CREATE TABLE DeleteTest
+(
+    dt_id int,
+    dt_name VARCHAR (40),
+    dt_date_time timestamp,
+    dt_action_performed VARCHAR (40)
+);
+
+// Create Trigger Using Delete Method
+
+DELIMITER $$
+
+CREATE TRIGGER deleteTrigger AFTER DELETE ON student FOR EACH ROW
+BEGIN
+
+INSERT INTO deletetest (dt_id, dt_name, dt_action_performed)
+VALUES (old.student_id, old.student_name, "Record Deleted");
+
+END
+
+// Delete any row it will result into Table DELETETEST
+
+DELETE FROM student WHERE student_id = 1;

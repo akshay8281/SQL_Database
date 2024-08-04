@@ -1,0 +1,105 @@
+---- SQL Assessment Program ----
+
+// From the above given tables write a SQL query to find the salesperson(s) and the customer(s) represented here. Return the Customer Name, City, Salesman, commission.
+
+// NOTE : Make sure you have to use join concept to solve the query Make sure to make your code clean kneat
+
+
+-- Create Database
+
+create database xyz_company;
+
+
+-- Create Table 
+
+create table customer
+(
+    customer_id int primary key,
+    customer_name varchar (40),
+    city varchar (40),
+    grade int,
+    salesman_id int   
+);
+
+
+// Insert Data into Table Customer
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3002, "Nick Rimando", "New York", 100, 5001);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3007, "Brad Davis", "New York", 200, 5001);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3005, "Graham Zusi", "California", 200, 5002);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3008, "Julian Green", "London", 300, 5002);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3004, "Fabian Johnson", "Paris", 300, 5006);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3009, "Geoff Cameron", "Berlin", 100, 5003);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3003, "Jozy Altidor", "Moscow", 200, 5007);
+
+insert into customer (customer_id,customer_name,city,grade,salesman_id)
+values (3001, "Brad Guzan", "London", 100, 5005);
+
+
+-- Create Table Salesman
+
+create table salesman
+(
+    salesman_id int,
+    name varchar (40),
+    city varchar (40),
+    commission decimal (5,2)
+    
+);
+
+
+// Insert Data into Table Salesman
+
+insert into salesman (salesman_id, name, city, commission)
+values (5001, "James Hoog", "New York", 0.15);
+
+insert into salesman (salesman_id, name, city, commission)
+values (5002, "Nail Knite", "Paris", 0.13);
+
+insert into salesman (salesman_id, name, city, commission)
+values (5005, "Pit Alex", "London", 0.11);
+
+insert into salesman (salesman_id, name, city, commission)
+values (5006, "Mc Lyon", "Paris", 0.14);
+
+insert into salesman (salesman_id, name, city, commission)
+values (5007, "Paul Adam", "Rome", 0.13);
+
+insert into salesman (salesman_id, name, city, commission)
+values (5003, "Lausen Hen", "San Jose", 0.12);
+
+
+// Joining two tables Data into One using Inner Join Method
+
+select customer.customer_name as "Customer Name" , 
+customer.city as "City", salesman.name as "Sales Person" ,
+salesman.commission as "Commission", 
+salesman.salesman_id as "Salesperson Identity"
+from customer
+inner join salesman
+on customer.salesman_id = salesman.salesman_id;
+
+
+// Show All the Data of Table
+
+select * from customer;
+select * from salesman;
+
+
+// Remove Whole Table from the Database
+
+drop table salesman;
+drop table customer;

@@ -1,0 +1,42 @@
+// Procedure Method
+// Simple or With Parameter
+
+// Create Database
+
+create database procedure_db
+
+
+// Create Table
+
+create table candidates
+(
+	can_id  int ,
+	can_name  VARCHAR (40)
+);
+
+
+// Insert Different Data through Procedure Method
+
+// Create Procedure With Perameter
+
+DELIMITER $$
+
+create procedure insertDiffData ( num  int,  name  Varchar (40) )
+Begin
+
+Insert into candidates (can_id, can_name)
+values (num, name);
+
+End
+
+// Call Procedure for inert Data into table
+
+CALL insertDiffData (2, "Raghav");
+CALL insertDiffData (3, "Jay");
+CALL insertDiffData (4, "Nisha");
+CALL insertDiffData (5, "Harnish");
+CALL insertDiffData (6, "Jiger");
+
+
+
+
